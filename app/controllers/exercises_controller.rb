@@ -16,7 +16,7 @@ class ExercisesController < ApplicationController
     #   * joinsを使うこと
     #   * 取得したAddressのインスタンスにorders_countと呼びかけると注文の数を返すこと
     #配列の並べ替え⇒order 一番上⇒first 一番下⇒last
-    @address = Address.joins(:orders).select('address.*, count(orders.address_id) as orders_count').group(:id).order('count(address_id) DESC').first
+    @address = Address.joins(:orders).select('addresses.*, count(orders.address_id) as orders_count').group(:id).order('count(address_id) DESC').first
   end
 
   def exercise4 
