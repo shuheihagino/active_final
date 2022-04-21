@@ -16,13 +16,13 @@ class ExercisesController < ApplicationController
     #   * joinsを使うこと
     #   * 取得したAddressのインスタンスにorders_countと呼びかけると注文の数を返すこと
     #配列の並べ替え⇒order 一番上⇒first 一番下⇒last
-    @address = Address.joins(:orders).select("address.*,count(orders.address_id) as orders_count").group(:id).order("count(address_id) DESC").first
+    @address = Address.joins(:orders).select('address.*, count(orders.address_id) as orders_count').group(:id).order('count(address_id) DESC').first
   end
 
   def exercise4 
     # 【要件】一番お金を使っている顧客を返すこと
     #   * joinsを使うこと
     #   * 取得したCustomerのインスタンスにfoods_price_sumと呼びかけると合計金額を返すこと
-    @customer = Customer.joins(orders: :foods).select("customers.*,sum(food.price) as food_price_sum").group(:id).order("sum(price) DESC").first
+    @customer = Customer.joins(orders: :foods).select('customers.*, sum(food.price) as food_price_sum').group(:id).order('sum(price) DESC').first
   end
 end
